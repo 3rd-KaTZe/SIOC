@@ -1,0 +1,303 @@
+// *****************************************************************************
+// * Config_SIOC ver 5.0B5  -     By Manuel Velez    -    www.opencockpits.com
+// *****************************************************************************
+// * FileName : KaTZe_50-06.txt
+// * Date : 08/01/2015
+
+
+
+Var 0000, name LOCKONVAL     // Valeur pour LOCKONCMD 
+
+Var 0001, name LOCKONCMD     // Commandes LOCKON
+{
+  &LOCKONCMD = 0
+}
+
+Var 0002, name SPECIALCMD     // Commandes spéciales
+{
+  &SPECIALCMD = 0    
+}
+
+Var 0003, name SIOCKEY     // Emulateur clavier SIOC
+{
+  &SIOCKEY = 0    
+}
+
+Var 0004, name Chan_TS
+Var 0005, name KTZLink_error
+Var 0007, name KTZPit_rcv
+{
+  &KTZPit_rcv = 0
+}
+
+Var 0008, name KTZPit_send
+Var 0009, name KTZLink_pulse
+
+Var 0020, name DEBUG		// ----------------------------------------------Section Libre debuggage (20-40)------------
+
+Var 0022, name TestVal_1
+
+Var 0030, name GENERAL		// ----------------------------------------------Section Paramêtres Généraux (40-100)------------
+
+Var 0041, name Time_Start     // Heure de début de la mission = LoGetMiss
+Var 0042, name Time_Mission     // Chrono de la mission = LoGetModelTime(),
+{
+  &Time5s = MOD &Time_Mission ,5
+  &Time_Now = &Time_Mission + &Time_Start
+  &FlyTime = &FlyTime + &In_flight     // Incrément de la durée de vol (si In_flig
+}
+
+Var 0044, name Time_Now     // Heure Actuelle en Seconde (Calculé depui
+
+
+Var 0047, name In_flight, Value 0     // Switch appareil en vol (>150km/h)
+Var 0048, name FlyTime, Value 0     // Durée de vol (sec)
+
+Var 0050, name Time5s     // Temps modulus 5 secondes
+{
+  IF &Time5s = 0     // Calculs consommation effectués toutes le
+  {
+    CALL &Conso_Sub, &Fuel_In     // SUBRUTINE de calcul de Consommation
+	&KTZPIT_send = &KTZLink_pulse	// Ping vers le KaTZ-Pit
+  }
+}
+
+Var 0055, name Coalition
+
+Var 0060, name myXccord
+Var 0062, name myYccord
+
+Var 0070, name latitude
+Var 0071, name longitude
+Var 0072, name altitude
+
+
+Var 0100, name PARAVOL		// ----------------------------------------------Section Paramêtres de Vol (100-200)------------
+
+Var 0102, name IAS     // IAS (cm/s) = (51)
+Var 0104, name TAS     // TAS (cm/s) = 
+
+Var 0110, name QNH1     // Altitude QNH (Niveau Mer) (1000m)
+Var 0112, name QNH     // Altitude QNH (Niveau Mer) (m) 
+Var 0120, name AltiRad     // Hauteur au dessus du sol (m)
+{
+  IF &AltiRad > 100     // Si Alti Radar > 1 m avion en vol
+  {
+    &In_flight = 1    
+  }
+  ELSE
+  {
+    &In_flight = 0    
+  }
+}
+
+Var 0122, name Altirad_D  //  Valeur Digitale de l'altirad
+Var 0124, name Altirad_DX  //  Valeur Index l'Altirad
+Var 0126, name AltiRad_FL	// Flag AltiRad
+
+Var 0130, name Vario     // Variometre
+Var 0134, name Acc_G     // Nombre de G
+Var 0136, name AOA     // Angle of Attack
+
+Var 0140, name Pitch     // Taux de tangage
+Var 0142, name Bank     // Taux de roulis
+Var 0144, name Yaw     // Taux de lacet
+Var 0146, name ADI_FI		// Flag et Index de l'ADI
+
+
+Var 0150, name Boussole
+
+Var 0152, name Cap_deg     // Cap en 0.1 degré - export direct de BS2 (366)
+Var 0154, name Route_dev	// Deviation aiguille Route vs Cap
+
+Var 0156, name WP_dev		// Deviation aiguille WP vs Cap (Mi-8) ou Cap WP (KA)
+Var 0160, name WP_Num     	// n° Way Point selectionné
+Var 0162, name WP_Distance  // Distance du WP selectionné (m)
+
+Var 0180, name EUP
+
+
+Var 0200, name MOTEUR		// ----------------------------------------------Section Moteurs (200-400)------------
+
+Var 0202, name Eng_rpm 		// RPM Moteur Gauche et Droite (50005000)
+
+Var 0204, name Eng_temp 		// Temperature Moteur Gauche et Droit
+
+Var 0210, name Eng_mod			// Mode Moteurs 				(592)
+Var 0212, name Eng_L_mod		// Mode Moteur Gauche 			(234)
+Var 0213, name Eng_R_mod		// Mode Moteur Droit 			(235)
+
+Var 0220, name COff      // Levier Rotor Break + Cut Off Left + Cut Off Right
+
+Var 0230, name Rotor_rpm 		// RPM Rotor					(52)
+Var 0232, name Rotor_pitch 		// Incidence Rotor				(53)
+
+Var 0240, name TorGas       // Torque Pressure and Gas Tech
+Var 0242, name ExhTemp  // Exhaust Temp
+
+Var 0250, name Eng_Oil_t 		// Temperature Huile Moteur
+Var 0255, name GB_Oil_t 		// Temperature Huile Boite de Vitesse
+
+Var 0260, name Eng_Oil_p 		// Pression Huile Moteur
+Var 0265, name GB_Oil_p 		// Pression Huile Boite de Vitesse
+
+
+Var 0300, name APU_Data			// Pression + Température de l'APU  --------------- APU (300-350) --------------------------
+{ 
+	L1 = MOD &APU_Data ,10000
+	&APU_Temp = L1 - 5000
+	L2 = &APU_Data / 10000
+	L2 = Trunc L2
+	&APU_Press = L2 - 5000
+}
+
+Var 0302, name APU_Temp			// Température APU, data pour PIT
+Var 0303, name APU_Press		// Pression Air APU, data pour PIT
+
+Var 0310, name APU_Voyants		// Voyants APU
+Var 0315, name APU_typ		// APU Type demarrage Start/vent 			(Mi-412)
+
+Var 0350, name DEMARRAGE        // Sous section Demarrage --------------------------- (350-400) ------------
+
+Var 0352, name Start_V      // Voyant demarrage (ignition + Start)
+
+Var 0356, name Start_Sel	// Selection de démarrage
+Var 0358, name Start_typ	// Type de demarrage
+
+
+Var 0400, name FUEL			// --------------------------------------------- Section Fuel Management (400-450) ------------
+
+Var 0402, name Fuel_In		
+
+Var 0404, name Fuel_For     // Fuel internal Avant(Deca-gramme = Unité Koko) (137)
+{
+  &Fuel_In = &Fuel_For + &Fuel_Aft     // Calcul de la quantité de Kéro total (UK)
+}
+
+Var 0406, name Fuel_Aft     // Fuel internal Arriere (Deca-gramme) (138)
+{
+  &Fuel_In = &Fuel_For + &Fuel_Aft     // Calcul de la quantité de Kéro total (UK)
+}
+
+Var 0420, name Fuel_T0 		    // Fuel Conso 0 : à temps t
+Var 0421, name Fuel_T1			// Fuel Conso 1 : à temps t-5 secondes
+
+Var 0424, name Conso_5s			// Consommation UK sur les 5 secondes
+Var 0425, name Conso_mn			// Consommation UK / mn
+
+Var 0428, name Conso_Sub, Link SUBRUTINE     // Calcul de Consommation
+{
+  &Fuel_T1 = &Fuel_T0    
+  &Fuel_T0 = &Fuel_In    
+  &Conso_5s = &Fuel_T1 - &Fuel_T0     // Consommation kéro sur 5 secondes (UK)
+  &Conso_mn = &Conso_5s * 12     // Consommation kéro extrapolée sur 1 mn (U
+}
+
+
+
+
+Var 0430, name Fuel_V			// Voyant Vanne Fuel X-L-R Feed			(211)
+
+Var 0435, name Fuel_P			// Voyant Fuel Pump (S-L-R ou Av-AR)
+
+Var 0440, name Fuel_PE			// Voyant Fuel Pump Externe (EL-IL-IR-ER)
+
+Var 0450, name HYDRO		// --------------------------------------------- Section Hydraulique (450-500) ------------
+
+
+Var 0500, name ELEC			// --------------------------------------------- Section Electicite (500-550) -----------------
+
+Var 0502, name Rotator_DC		// Selecteur Bus DC
+Var 0504, name Switch_DC 		// Position Switch DC
+Var 0506, name Voyants_DC 		// Voyants Electric DC
+
+Var 0510, name ACDC_Volt		// Voltage AC DC
+
+Var 0512, name Rotator_AC		// Selecteur Bus AC
+Var 0514, name Switch_AC 		// Position Switch AC			
+Var 0516, name Voyants_AC 		// Voyants Electric AC	et EEG
+
+
+Var 0530, name Stby_Load		// Charge du Stby Gen (Mi)
+Var 0532, name GenFail_G		// Test ... voyant Generator Fail Gauche
+
+
+Var 0550, name PILOTOTO			// --------------------------------------------- Section Pilototo (550-600) -----------------
+
+Var 0552, name Pilototo_KA1
+
+Var 0554, name Pilototo_KA2
+
+Var 0569, name LowAlt 
+
+Var 0574, name UhAlarm			// Flag Alarm du UH-1
+
+
+Var 0600, name MECANIC			// --------------------------------------------- Section Elements Mecaniques (600-650) -----------------
+
+Var 0602, name Cockpit
+Var 0604, name Gear
+
+Var 0620, name WheelBrk
+Var 0622, name BrakePress
+
+Var 0650, name AVIONIC			// --------------------------------------------- Section Avionique (650-1000) -------------------------
+
+Var 0652, name Mode_main     // mode principal
+Var 0654, name Mode_sub     // mode secondaire
+
+Var 0660, name ARKUD			// ArkUD Switch and Lamp
+
+Var 0662, name ARK9_S			// Ark9 position Switch
+Var 0664, name ARK9_F			// Ark9 fréquences
+Var 0666, name ARK9_Data		// Ark9 données Signal
+
+Var 0672, name Doppler_d1   // Doppler Data 1
+Var 0674, name Doppler_d2   // Doppler Data 2
+Var 0676, name Doppler_f    // Doppler Flag
+
+Var 0682, name D15_drift		// diss15 drift Data
+Var 0684, name D15_V_mem		// diss15 voyant Memory
+
+Var 0692, name Sling_3D			// Sling on/off et vario
+Var 0694, name Sling_2D			// Sling av/ar et ga/dr
+
+Var 0702, name ILS_Up     // Positionnement vertical faisceau ILS = L
+Var 0704, name ILS_Lat     // Positionnement lateral faisceau ILS = Lo
+Var 0706, name Runway_X     // Position X du terrain selectionné
+
+
+
+Var 1000, name WEAPON			// --------------------------------------------- Section Armement  (1000-2000) -----------------
+
+
+Var 1002, name DLinkL1
+Var 1004, name DLinkL2
+Var 1006, name DLinkL3
+
+Var 1010, name Tgt_btn
+
+Var 1020, name UH_Wpn		//	Weapon selector UH-1
+Var 1025, name UH_Flr		// Flare selector UH-1
+Var 1027, name FlCh		// Nombre Flare / Chaff restant type 50005000	
+
+Var 2000, name PIT			// --------------------------------------------- Section SimPit  (2000-9999) -----------------
+
+Var 3130, name Test_Gilles
+{
+	&SPECIALCMD = 14801000 + &Test_Gilles    
+}
+
+Var 3150, name SW_gauche
+{
+	L0 = 34800201 - &SW_gauche
+	&SPECIALCMD = L0 + &SW_droit   
+}
+
+
+Var 3151, name SW_droit
+{
+	L0 = 34800201 - &SW_gauche
+	&SPECIALCMD = L0 + &SW_droit
+}
+
