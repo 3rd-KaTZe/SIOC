@@ -251,6 +251,7 @@ Var 0660, name ARKUD			// ArkUD Switch and Lamp
 Var 0662, name ARK9_S			// Ark9 position Switch
 Var 0664, name ARK9_F			// Ark9 fréquences
 Var 0666, name ARK9_Data		// Ark9 données Signal
+Var 0668, name MW_VHF			// Selection source pour HSI/ADF
 
 Var 0672, name Doppler_d1   // Doppler Data 1
 Var 0674, name Doppler_d2   // Doppler Data 2
