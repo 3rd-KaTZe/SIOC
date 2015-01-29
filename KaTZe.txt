@@ -278,6 +278,10 @@ Var 1006, name DLinkL3
 
 Var 1010, name Tgt_btn
 
+Var 1015, name Wpn_Ka		// Ka-50 Panel Weapon Scan 
+Var 1016, name Wpn_Lamp
+Var 1018, name Wpn_Flag
+
 Var 1020, name UH_Wpn		//	Weapon selector UH-1
 Var 1025, name UH_Flr		// Flare selector UH-1
 Var 1027, name FlCh		// Nombre Flare / Chaff restant type 50005000	
