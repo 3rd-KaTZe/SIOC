@@ -114,6 +114,10 @@ Var 0156, name WP_dev		// Deviation aiguille WP vs Cap (Mi-8) ou Cap WP (KA)
 Var 0160, name WP_Num     	// n° Way Point selectionné
 Var 0162, name WP_Distance  // Distance du WP selectionné (m)
 
+Var 0171, name pvi800_1
+Var 0172, name pvi800_2
+Var 0173, name pvi800_3
+
 Var 0180, name EUP
 
 
@@ -267,6 +271,11 @@ Var 0702, name ILS_Up     // Positionnement vertical faisceau ILS = L
 Var 0704, name ILS_Lat     // Positionnement lateral faisceau ILS = Lo
 Var 0706, name Runway_X     // Position X du terrain selectionné
 
+Var 0731, name Abris1		// Code menu de l'Abris position 1 et 2
+Var 0732, name Abris2		// Code menu de l'Abris position 3 et 4
+Var 0733, name Abris3		// Code menu de l'Abris position 5
+
+
 
 
 Var 1000, name WEAPON			// --------------------------------------------- Section Armement  (1000-2000) -----------------
@@ -278,6 +287,7 @@ Var 1006, name DLinkL3
 
 Var 1010, name Tgt_btn
 
+Var 1014, name Wpn_Ammo		// Munitions Restantes
 Var 1015, name Wpn_Ka		// Ka-50 Panel Weapon Scan 
 Var 1016, name Wpn_Lamp
 Var 1018, name Wpn_Flag
@@ -285,6 +295,8 @@ Var 1018, name Wpn_Flag
 Var 1020, name UH_Wpn		//	Weapon selector UH-1
 Var 1025, name UH_Flr		// Flare selector UH-1
 Var 1027, name FlCh		// Nombre Flare / Chaff restant type 50005000	
+
+Var 1040, name UV26			// Nb display on UV26
 
 Var 2000, name PIT			// --------------------------------------------- Section SimPit  (2000-9999) -----------------
 
