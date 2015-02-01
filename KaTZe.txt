@@ -296,7 +296,8 @@ Var 1020, name UH_Wpn		//	Weapon selector UH-1
 Var 1025, name UH_Flr		// Flare selector UH-1
 Var 1027, name FlCh		// Nombre Flare / Chaff restant type 50005000	
 
-Var 1040, name UV26			// Nb display on UV26
+Var 1040, name UV26_Data			// Nb display on UV26
+Var 1042, name UV26_Flag
 
 Var 2000, name PIT			// --------------------------------------------- Section SimPit  (2000-9999) -----------------
 
