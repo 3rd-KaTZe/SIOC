@@ -76,6 +76,7 @@ Var 0100, name PARAVOL		// ----------------------------------------------Section
 
 Var 0102, name IAS     // IAS (cm/s) = (51)
 Var 0104, name TAS     // TAS (cm/s) = 
+Var 0106, name Mach		// Nb de Mach
 
 Var 0110, name QNH1     // Altitude QNH (Niveau Mer) (1000m)
 Var 0112, name QNH     // Altitude QNH (Niveau Mer) (m) 
@@ -232,15 +233,22 @@ Var 0552, name Pilototo_KA1
 
 Var 0554, name Pilototo_KA2
 
+Var 0556, name AP_Mode 			// FC3
+
 Var 0569, name LowAlt 
 
 Var 0574, name UhAlarm			// Flag Alarm du UH-1
+
+Var 0580, name MWarning			// Master Warning
 
 
 Var 0600, name MECANIC			// --------------------------------------------- Section Elements Mecaniques (600-650) -----------------
 
 Var 0602, name Cockpit
 Var 0604, name Gear
+Var 0606, name Flaps
+Var 0608, name AirBreak
+Var 0610, name Chute
 
 Var 0620, name WheelBrk
 Var 0622, name BrakePress
@@ -298,6 +306,47 @@ Var 1027, name FlCh		// Nombre Flare / Chaff restant type 50005000
 
 Var 1040, name UV26_Data			// Nb display on UV26
 Var 1042, name UV26_Flag
+
+
+
+Var 1105, name Canon_ammo     // munitions canon restantes
+Var 1106, name Fuel_Tank_nb     // nombre de réservoirs coco externes
+
+Var 1108, name WPS_S_num     // pylone selecionne n°
+Var 1109, name WPS_S_Qty     // pylone selecionne quantite
+
+Var 1110, name ammo_checksum     // quantité d'ammo emport, variation declan
+Var 1111, name WPS1_Qty			// Weapon Station 1 Quantity
+Var 1112, name WPS2_Qty
+Var 1113, name WPS3_Qty
+Var 1114, name WPS4_Qty
+Var 1115, name WPS5_Qty
+Var 1116, name WPS6_Qty
+Var 1117, name WPS7_Qty
+Var 1118, name WPS8_Qty
+Var 1119, name WPS9_Qty
+Var 1120, name WPS10_Qty
+Var 1121, name WPS11_Qty
+Var 1122, name WPS12_Qty
+Var 1123, name WPS13_Qty
+
+Var 1126, name WPS1_Typ			// Weapon Station 1 Type
+Var 1127, name WPS2_Typ
+Var 1128, name WPS3_Typ
+Var 1129, name WPS4_Typ
+Var 1130, name WPS5_Typ
+Var 1131, name WPS6_Typ
+Var 1132, name WPS7_Typ
+Var 1133, name WPS8_Typ
+Var 1134, name WPS9_Typ
+Var 1135, name WPS10_Typ
+Var 1136, name WPS11_Typ
+Var 1137, name WPS12_Typ
+Var 1138, name WPS13_Typ
+
+
+
+
 
 Var 2000, name PIT			// --------------------------------------------- Section SimPit  (2000-9999) -----------------
 
