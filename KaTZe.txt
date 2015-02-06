@@ -248,7 +248,6 @@ Var 0602, name Cockpit
 Var 0604, name Gear
 Var 0606, name Flaps
 Var 0608, name AirBreak
-Var 0610, name Chute
 
 Var 0620, name WheelBrk
 Var 0622, name BrakePress
