@@ -45,6 +45,7 @@ Var 0042, name Time_Mission     // Chrono de la mission = LoGetModelTime(),
   &Time5s = MOD &Time_Mission ,5
   &Time_Now = &Time_Mission + &Time_Start
   &FlyTime = &FlyTime + &In_flight     // Incrément de la durée de vol (si In_flig
+  CALL &Conso_Sub, &Fuel_In     // SUBRUTINE de calcul de Consommation
 }
 
 Var 0044, name Time_Now     // Heure Actuelle en Seconde (Calculé depui
@@ -57,7 +58,6 @@ Var 0050, name Time5s     // Temps modulus 5 secondes
 {
   IF &Time5s = 0     // Calculs consommation effectués toutes le
   {
-    CALL &Conso_Sub, &Fuel_In     // SUBRUTINE de calcul de Consommation
 	&KTZPIT_send = &KTZLink_pulse	// Ping vers le KaTZ-Pit
   }
 }
@@ -184,18 +184,28 @@ Var 0406, name Fuel_Aft     // Fuel internal Arriere (Deca-gramme) (138)
   &Fuel_In = &Fuel_For + &Fuel_Aft     // Calcul de la quantité de Kéro total (UK)
 }
 
+Var 0411, name Fuel_T1			// Fuel Reservoirs : à temps t-1 secondes
+Var 0412, name Fuel_T2			// Fuel Reservoirs : à temps t-2 secondes
+Var 0413, name Fuel_T3			// Fuel Reservoirs : à temps t-3 secondes
+Var 0414, name Fuel_T4			// Fuel Reservoirs : à temps t-4 secondes
+Var 0415, name Fuel_T5			// Fuel Reservoirs : à temps t-5 secondes
+
+
 Var 0420, name Fuel_T0 		    // Fuel Conso 0 : à temps t
-Var 0421, name Fuel_T1			// Fuel Conso 1 : à temps t-5 secondes
 
 Var 0424, name Conso_5s			// Consommation UK sur les 5 secondes
 Var 0425, name Conso_mn			// Consommation UK / mn
 
 Var 0428, name Conso_Sub, Link SUBRUTINE     // Calcul de Consommation
 {
-  &Fuel_T1 = &Fuel_T0    
-  &Fuel_T0 = &Fuel_In    
-  &Conso_5s = &Fuel_T1 - &Fuel_T0     // Consommation kéro sur 5 secondes (UK)
-  &Conso_mn = &Conso_5s * 12     // Consommation kéro extrapolée sur 1 mn (U
+	&Fuel_T5 = &Fuel_T4    
+	&Fuel_T4 = &Fuel_T3    
+	&Fuel_T3 = &Fuel_T2    
+	&Fuel_T2 = &Fuel_T1    
+	&Fuel_T1 = &Fuel_T0    
+	&Fuel_T0 = &Fuel_In    
+	&Conso_5s = &Fuel_T5 - &Fuel_T0     // Consommation kéro sur 5 secondes (UK)
+	&Conso_mn = &Conso_5s * 12     // Consommation kéro extrapolée sur 1 mn (U
 }
 
 
