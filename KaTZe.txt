@@ -108,6 +108,8 @@ Var 0124, name Altirad_DX     //  Valeur Index l'Altirad
 
 Var 0126, name AltiRad_FL     // Flag AltiRad
 
+Var 0128, name QNH_cal    // Calage QNH
+
 Var 0130, name Vario     // Variometre
 
 Var 0132, name Bille
