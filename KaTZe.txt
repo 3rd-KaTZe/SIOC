@@ -27,10 +27,7 @@ Var 0004, name Chan_TS
 
 Var 0005, name KTZLink_error
 
-Var 0007, name KTZPit_rcv
-{
-  &KTZPit_rcv = 0    
-}
+Var 0007, name DCS_Focus
 
 Var 0008, name KTZPit_send
 
