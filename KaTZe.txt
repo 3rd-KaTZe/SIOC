@@ -29,9 +29,7 @@ Var 0005, name KTZLink_error
 
 Var 0007, name DCS_Focus
 
-Var 0008, name KTZPit_send
 
-Var 0009, name KTZLink_pulse
 
 Var 0020, name DEBUG     // ----------------------------------------
 
@@ -55,13 +53,9 @@ Var 0047, name In_flight, Value 0     // Switch appareil en vol (>150km/h)
 
 Var 0048, name FlyTime, Value 0     // Durée de vol (sec)
 
-Var 0050, name Time5s     // Temps modulus 5 secondes
-{
-  IF &Time5s = 0     // Calculs consommation effectués toutes le
-  {
-    &KTZPit_send = &KTZLink_pulse         // Ping vers le KaTZ-Pit
-  }
-}
+Var 0050, name Time5s     // Temps modulus 5 secondes,
+
+Var 0052, name Chrono
 
 Var 0055, name Coalition
 
@@ -88,16 +82,6 @@ Var 0110, name QNH1     // Altitude QNH (Niveau Mer) (1000m)
 Var 0112, name QNH     // Altitude QNH (Niveau Mer) (m) 
 
 Var 0120, name AltiRad     // Hauteur au dessus du sol (m)
-{
-  IF &AltiRad > 100     // Si Alti Radar > 1 m avion en vol
-  {
-    &In_flight = 1    
-  }
-  ELSE
-  {
-    &In_flight = 0    
-  }
-}
 
 Var 0122, name Altirad_D     //  Valeur Digitale de l'altirad
 
@@ -146,6 +130,16 @@ Var 0180, name EUP
 Var 0200, name MOTEUR     // ----------------------------------------
 
 Var 0202, name Eng_rpm     // RPM Moteur Gauche et Droite (50005000)
+{
+  IF &Eng_rpm > 50005000     // Si Moteur en marche > Temps de vol On
+  {
+    &In_flight = 1    
+  }
+  ELSE
+  {
+    &In_flight = 0    
+  }
+}
 
 Var 0204, name Eng_temp     // Temperature Moteur Gauche et Droit
 
