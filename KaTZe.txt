@@ -120,10 +120,12 @@ Var 0160, name WP_Num     // n° Way Point selectionné
 Var 0162, name WP_Distance     // Distance du WP selectionné (m)
 
 Var 0171, name pvi800_1
-
 Var 0172, name pvi800_2
-
 Var 0173, name pvi800_3
+
+Var 0175, name pvi800_4
+Var 0176, name pvi800_5
+Var 0177, name pvi800_6
 
 Var 0180, name EUP
 
