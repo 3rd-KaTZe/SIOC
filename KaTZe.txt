@@ -363,6 +363,8 @@ Var 1025, name UH_Flr     // Flare selector UH-1
 
 Var 1027, name FlCh     // Nombre Flare / Chaff restant type 500050
 
+Var 1038, name Shkval
+
 Var 1040, name UV26_Data     // Nb display on UV26
 
 Var 1042, name UV26_Flag
