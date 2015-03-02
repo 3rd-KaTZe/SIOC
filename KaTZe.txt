@@ -69,6 +69,9 @@ Var 0071, name longitude
 
 Var 0072, name altitude
 
+Var 0080, name stick_pos
+Var 0082, name rudder_pos
+
 Var 0100, name PARAVOL     // ----------------------------------------
 
 Var 0102, name IAS     // IAS (cm/s) = (51)
