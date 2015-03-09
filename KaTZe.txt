@@ -63,6 +63,10 @@ Var 0060, name myXccord
 
 Var 0062, name myYccord
 
+Var 0064, name My_lat
+
+Var 0066, name My_lon
+
 Var 0070, name latitude
 
 Var 0071, name longitude
@@ -359,8 +363,9 @@ Var 1018, name Wpn_Flag
 
 Var 1020, name UH_Wpn     // Weapon selector UH-1
 
-Var 1022, name Wpn_KA_2
-Var 1023, name Wpn_KA_3
+Var 1021, name Wpn_1
+Var 1022, name Wpn_2
+Var 1023, name Wpn_3
 
 Var 1025, name UH_Flr     // Flare selector UH-1
 
